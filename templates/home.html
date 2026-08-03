@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Upload MRI | Brain Tumor Classifier{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h3 mb-3">MRI Image Prediction</h1>
+        <p class="text-muted">Upload a brain MRI image to classify it. Accepted formats: JPG, JPEG, and PNG.</p>
+        <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+          <div class="mb-4">
+            <label for="image" class="form-label">MRI image</label>
+            <input class="form-control" id="image" name="image" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" required>
+            <div class="form-text">Maximum file size: 10 MB.</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Predict</button>
+          <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

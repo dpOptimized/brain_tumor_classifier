@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Prediction | Brain Tumor Classifier{% endblock %}
+{% block content %}
+<div class="row g-4 justify-content-center">
+  <div class="col-lg-5">
+    <div class="card shadow-sm h-100">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Uploaded MRI</h1>
+        <img class="img-fluid rounded border mri-image" src="{{ image_url }}" alt="Uploaded brain MRI image">
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card shadow-sm h-100">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Prediction Result</h1>
+        <dl class="row mb-4">
+          <dt class="col-sm-5">Predicted class</dt>
+          <dd class="col-sm-7 text-capitalize">{{ result.label }}</dd>
+          <dt class="col-sm-5">Confidence</dt>
+          <dd class="col-sm-7">{{ '%.2f'|format(result.confidence) }}%</dd>
+        </dl>
+        <h2 class="h6 mb-3">Class probabilities</h2>
+        <div class="table-responsive">
+          <table class="table table-sm align-middle mb-4">
+            <thead><tr><th>Class</th><th class="text-end">Probability</th></tr></thead>
+            <tbody>
+              {% for item in result.probabilities %}
+              <tr><td class="text-capitalize">{{ item.label }}</td><td class="text-end">{{ '%.2f'|format(item.percent) }}%</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <a class="btn btn-primary" href="{{ url_for('home') }}">Classify another image</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

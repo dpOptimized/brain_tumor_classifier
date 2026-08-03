@@ -1,0 +1,17 @@
+body {
+  background: #ffffff;
+  color: #212529;
+}
+
+.card {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+.mri-image {
+  display: block;
+  max-height: 460px;
+  width: 100%;
+  object-fit: contain;
+  background: #fff;
+}

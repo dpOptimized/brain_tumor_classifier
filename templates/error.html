@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Upload Error | Brain Tumor Classifier{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h1 class="h4 mb-3">Unable to process image</h1>
+        <p class="mb-4">{{ message }}</p>
+        <a class="btn btn-primary" href="{{ url_for('home') }}">Back to upload</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
